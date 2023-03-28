@@ -1,0 +1,7 @@
+dump_runner:
+  image: alpine:latest
+  script:
+    - cat /proc/cpuinfo
+  tags:
+  - x86_64
+  - cpuonly
