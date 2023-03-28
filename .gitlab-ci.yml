@@ -2,6 +2,7 @@ dump_runner:
   image: alpine:latest
   script:
     - cat /proc/cpuinfo
+    - lscpu
   tags:
   - x86_64
   - cpuonly
