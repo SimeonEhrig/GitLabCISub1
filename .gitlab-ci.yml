@@ -1,8 +1,10 @@
 dump_runner:
-  image: alpine:latest
+  image: ubuntu:latest
   script:
+    - apt update && apt install -y cpuid
     - cat /proc/cpuinfo
     - lscpu
+    - cpuid | grep brand
   tags:
   - x86_64
   - cpuonly
