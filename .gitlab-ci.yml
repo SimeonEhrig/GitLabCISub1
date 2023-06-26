@@ -1,4 +1,10 @@
-run_test:
+run_unit_tests:
   image: julia:1.8
   script:
-    - julia --project=@. -e 'import Pkg; Pkg.Registry.add(Pkg.RegistrySpec(url="https://github.com/SimeonEhrig/GitLabCIRegistry.git")); Pkg.test(; coverage = true)'
+    - apt update && apt install -y git
+    - git clone --depth 1 https://github.com/SimeonEhrig/GitlabCIMain.git /GitlabCIMain
+    - julia --project=. -e 'import Pkg; Pkg.Registry.add(Pkg.RegistrySpec(url="https://github.com/SimeonEhrig/GitLabCIRegistry.git"));'
+    - julia --project=. -e 'import Pkg; Pkg.Registry.add(Pkg.RegistrySpec(url="https://github.com/JuliaRegistries/General"));'
+    - julia --project=. /GitlabCIMain/SetupDevEnv/src/SetupDevEnv.jl Project.toml
+    - julia --project=. -e 'import Pkg; Pkg.instantiate()'
+    - julia --project=. -e 'import Pkg; Pkg.test(; coverage = true)'
