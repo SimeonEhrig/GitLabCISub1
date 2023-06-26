@@ -8,7 +8,7 @@ import MonteCarloPI
 Get the circumference of a circle by a given radius.
 """
 function get_circle_circumference(radius)
-    return 2 * MonteCarloPI.get_pi() * radius;
+    return 2 * MonteCarloPI.get_pi(42) * radius;
 end
 
 """
@@ -17,7 +17,7 @@ end
 Get the area of a circle by a given radius.
 """
 function get_circle_area(radius)
-    return MonteCarloPI.get_pi() * radius ^ 2;
+    return MonteCarloPI.get_pi(42) * radius ^ 2;
 end
 
 end # module GitLabCISub1
